@@ -19,11 +19,10 @@ const ChapterItem = ({chapterId}: Props) => {
   const chapter: IChapter = useSelector(chapterSelector(Number(chapterId)));
   const [modalVisible, setModalVisible] = useState(false);
   const loading = useSelector(loadingSelector([requestTypes.characters]));
+  //Select random character because the API does not provide a chapter image so we need to show
+  //an character image.
   const random = useRef<number>();
   const image = `https://rickandmortyapi.com/api/character/avatar/${random.current}.jpeg`;
-  //Select random chapter because the API does not provide an episode image so we need to show
-  //an character image.
-  // const character: ICharacter = useSelector(randomCharacterSelector());
 
   useEffect(() => {
     random.current = Math.floor(Math.random() * 671);
